@@ -15,6 +15,7 @@
 		0C712A9525254C2A00D28ABE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C712A9325254C2A00D28ABE /* LaunchScreen.storyboard */; };
 		0C712AA025254C2A00D28ABE /* CRONAlarmClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C712A9F25254C2A00D28ABE /* CRONAlarmClockTests.swift */; };
 		0C712AAB25254C2B00D28ABE /* CRONAlarmClockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C712AAA25254C2B00D28ABE /* CRONAlarmClockUITests.swift */; };
+		0C712ABF252550C100D28ABE /* UIColor+CRONAlarmClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C712ABE252550C100D28ABE /* UIColor+CRONAlarmClock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		0C712AA625254C2B00D28ABE /* CRONAlarmClockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CRONAlarmClockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C712AAA25254C2B00D28ABE /* CRONAlarmClockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRONAlarmClockUITests.swift; sourceTree = "<group>"; };
 		0C712AAC25254C2B00D28ABE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C712ABE252550C100D28ABE /* UIColor+CRONAlarmClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CRONAlarmClock.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				0C712A9125254C2A00D28ABE /* Assets.xcassets */,
 				0C712A9325254C2A00D28ABE /* LaunchScreen.storyboard */,
 				0C712A9625254C2A00D28ABE /* Info.plist */,
+				0C712ABE252550C100D28ABE /* UIColor+CRONAlarmClock.swift */,
 			);
 			path = CRONAlarmClock;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			files = (
 				0C712A8D25254C2A00D28ABE /* ViewController.swift in Sources */,
 				0C712A8925254C2A00D28ABE /* AppDelegate.swift in Sources */,
+				0C712ABF252550C100D28ABE /* UIColor+CRONAlarmClock.swift in Sources */,
 				0C712A8B25254C2A00D28ABE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
