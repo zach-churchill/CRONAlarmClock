@@ -27,10 +27,9 @@ class AlarmsViewController: UITableViewController {
                                                  for: indexPath) as! AlarmCell
         
         // Create a dummy alarm cell
-        cell.alarmLabel.text = "7:15"
-        cell.periodLabel.text = "AM"
-        cell.descriptionLabel.text = "Work week"
-        cell.activateSwitch.isOn = true
+        let alarm = Alarm()
+        cell.updateLabels(time: alarm.time, period: alarm.period, description: alarm.description)
+        cell.flipSwitch(isActive: alarm.isActive)
         
         return cell
     }

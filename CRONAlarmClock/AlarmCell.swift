@@ -9,8 +9,18 @@ import UIKit
 
 class AlarmCell: UITableViewCell {
     
-    @IBOutlet var alarmLabel: UILabel!
-    @IBOutlet var periodLabel: UILabel!
-    @IBOutlet var descriptionLabel: UILabel!
-    @IBOutlet var activateSwitch: UISwitch!
+    @IBOutlet private var alarmLabel: UILabel!
+    @IBOutlet private var periodLabel: UILabel!
+    @IBOutlet private var descriptionLabel: UILabel!
+    @IBOutlet private var activateSwitch: UISwitch!
+    
+    func updateLabels(time: String, period: Period, description: String?) {
+        alarmLabel.text = time
+        periodLabel.text = period.rawValue.uppercased()
+        descriptionLabel.text = description
+    }
+    
+    func flipSwitch(isActive: Bool) {
+        activateSwitch.isOn = isActive
+    }
 }
