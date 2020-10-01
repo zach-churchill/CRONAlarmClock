@@ -10,7 +10,6 @@
         <!--CRON Alarm Clock-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="AlarmsViewController" customModule="CRONAlarmClock" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7cj-kG-LGZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -19,13 +18,45 @@
                         <color key="separatorColor" name="MediumColor"/>
                         <color key="sectionIndexBackgroundColor" name="DarkColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iff-7C-jK8">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlarmCell" rowHeight="75" id="iff-7C-jK8" customClass="AlarmCell" customModule="CRONAlarmClock" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iff-7C-jK8" id="Bat-r7-UAa">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07G-h7-ZFc">
+                                            <rect key="frame" x="20" y="46" width="38" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" name="MediumLightColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tSJ-W0-Wcj">
+                                            <rect key="frame" x="343" y="22" width="51" height="31"/>
+                                            <color key="onTintColor" name="AccentColor"/>
+                                        </switch>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5V-fQ-DOP">
+                                            <rect key="frame" x="20" y="11" width="57" height="29"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <color key="textColor" name="LightColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" name="DarkColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="tSJ-W0-Wcj" secondAttribute="trailing" constant="22" id="06f-eB-r6f"/>
+                                        <constraint firstItem="o5V-fQ-DOP" firstAttribute="leading" secondItem="Bat-r7-UAa" secondAttribute="leadingMargin" id="F7M-Wd-8U2"/>
+                                        <constraint firstItem="07G-h7-ZFc" firstAttribute="bottom" secondItem="Bat-r7-UAa" secondAttribute="bottomMargin" id="GnO-bY-kam"/>
+                                        <constraint firstItem="o5V-fQ-DOP" firstAttribute="top" secondItem="Bat-r7-UAa" secondAttribute="topMargin" id="Ju5-gi-H3X"/>
+                                        <constraint firstItem="07G-h7-ZFc" firstAttribute="leading" secondItem="o5V-fQ-DOP" secondAttribute="leading" id="MlM-Du-EqZ"/>
+                                        <constraint firstItem="tSJ-W0-Wcj" firstAttribute="centerY" secondItem="Bat-r7-UAa" secondAttribute="centerY" id="ZJO-Ii-DH6"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="activateSwitch" destination="tSJ-W0-Wcj" id="fMg-n8-aNI"/>
+                                    <outlet property="alarmLabel" destination="o5V-fQ-DOP" id="b1F-4K-cgC"/>
+                                    <outlet property="descriptionLabel" destination="07G-h7-ZFc" id="Foa-cT-jv7"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
@@ -38,6 +69,7 @@
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1050.7246376811595" y="120.53571428571428"/>
         </scene>
@@ -78,6 +110,9 @@
         </namedColor>
         <namedColor name="MediumColor">
             <color red="0.54117647058823526" green="0.54117647058823526" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MediumLightColor">
+            <color red="0.7686274509803922" green="0.7686274509803922" blue="0.7686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
