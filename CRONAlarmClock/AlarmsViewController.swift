@@ -13,7 +13,7 @@ class AlarmsViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 75
+        tableView.estimatedRowHeight = 100
     }
 
     override func tableView(_ tableView: UITableView,
@@ -27,7 +27,8 @@ class AlarmsViewController: UITableViewController {
                                                  for: indexPath) as! AlarmCell
         
         // Create a dummy alarm cell
-        cell.alarmLabel.text = "7:15 AM"
+        cell.alarmLabel.text = "7:15"
+        cell.periodLabel.text = "AM"
         cell.descriptionLabel.text = "Work week"
         cell.activateSwitch.isOn = true
         

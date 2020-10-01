@@ -10,6 +10,7 @@ import UIKit
 class AlarmCell: UITableViewCell {
     
     @IBOutlet var alarmLabel: UILabel!
+    @IBOutlet var periodLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var activateSwitch: UISwitch!
 }
