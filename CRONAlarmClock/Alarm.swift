@@ -12,7 +12,7 @@ enum Period: String {
     case AM = "AM"
 }
 
-class Alarm {
+class Alarm: Equatable {
     var time: String
     var period: Period
     var description: String?
@@ -28,5 +28,12 @@ class Alarm {
     convenience init() {
         // Provide an example
         self.init(time: "7:15", period: Period.AM, description: "work week", isActive: true)
+    }
+    
+    static func ==(lhs: Alarm, rhs: Alarm) -> Bool {
+        return lhs.time == rhs.time
+            && lhs.period == rhs.period
+            && lhs.description == rhs.description
+            && lhs.isActive == rhs.isActive
     }
 }

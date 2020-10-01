@@ -71,11 +71,11 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="CRON Alarm Clock" id="gKE-mn-haB">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="SyO-En-lI9">
-                            <color key="tintColor" name="AccentColor"/>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="sEE-MC-As3">
                             <color key="tintColor" name="AccentColor"/>
+                            <connections>
+                                <action selector="addNewAlarm:" destination="BYZ-38-t0r" id="8vj-pd-tZn"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>

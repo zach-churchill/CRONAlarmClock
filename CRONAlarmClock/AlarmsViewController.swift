@@ -9,8 +9,32 @@ import UIKit
 
 class AlarmsViewController: UITableViewController {
     
+    /* Instance variables and functions */
+    
     var alarmStore: AlarmStore!
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        navigationItem.leftBarButtonItem = editButtonItem
+        navigationItem.leftBarButtonItem!.tintColor = UIColor.accent
+    }
+    
+    /* Interface Builder methods */
 
+    @IBAction func addNewAlarm(_ sender: UIBarButtonItem) {
+        // Just use dummy alarm for time being
+        let alarm = Alarm()
+        alarmStore.alarms.append(alarm)
+        
+        if let index = alarmStore.alarms.firstIndex(of: alarm) {
+            let indexPath = IndexPath(row: index, section: 0)
+            tableView.insertRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    /* Overriden Functions */
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
