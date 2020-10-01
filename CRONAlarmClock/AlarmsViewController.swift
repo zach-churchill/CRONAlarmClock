@@ -8,6 +8,8 @@
 import UIKit
 
 class AlarmsViewController: UITableViewController {
+    
+    var alarmStore: AlarmStore!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +20,7 @@ class AlarmsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return alarmStore.alarms.count
     }
     
     override func tableView(_ tableView: UITableView,
@@ -26,10 +28,9 @@ class AlarmsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlarmCell",
                                                  for: indexPath) as! AlarmCell
         
-        // Create a dummy alarm cell
-        let alarm = Alarm()
-        cell.updateLabels(time: alarm.time, period: alarm.period, description: alarm.description)
-        cell.flipSwitch(isActive: alarm.isActive)
+        // Our table will only ever have one section, so just use row to get alarm
+        let alarm = alarmStore.alarms[indexPath.row]
+        cell.updateDetails(alarm: alarm)
         
         return cell
     }
