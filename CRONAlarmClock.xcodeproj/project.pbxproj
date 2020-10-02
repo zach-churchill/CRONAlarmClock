@@ -19,6 +19,7 @@
 		0C712ACA2525567100D28ABE /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C712AC92525567100D28ABE /* AlarmCell.swift */; };
 		0C712ACF25255DC900D28ABE /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C712ACE25255DC900D28ABE /* Alarm.swift */; };
 		0C712AD42525620100D28ABE /* AlarmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C712AD32525620100D28ABE /* AlarmStore.swift */; };
+		0C8F3AB42527F59700D136D8 /* CustomSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8F3AB32527F59700D136D8 /* CustomSymbols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		0C712AC92525567100D28ABE /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
 		0C712ACE25255DC900D28ABE /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		0C712AD32525620100D28ABE /* AlarmStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmStore.swift; sourceTree = "<group>"; };
+		0C8F3AB32527F59700D136D8 /* CustomSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSymbols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				0C712AC92525567100D28ABE /* AlarmCell.swift */,
 				0C712ACE25255DC900D28ABE /* Alarm.swift */,
 				0C712AD32525620100D28ABE /* AlarmStore.swift */,
+				0C8F3AB32527F59700D136D8 /* CustomSymbols.swift */,
 			);
 			path = CRONAlarmClock;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 			files = (
 				0C712ACA2525567100D28ABE /* AlarmCell.swift in Sources */,
 				0C712AD42525620100D28ABE /* AlarmStore.swift in Sources */,
+				0C8F3AB42527F59700D136D8 /* CustomSymbols.swift in Sources */,
 				0C712A8D25254C2A00D28ABE /* AlarmsViewController.swift in Sources */,
 				0C712A8925254C2A00D28ABE /* AppDelegate.swift in Sources */,
 				0C712ABF252550C100D28ABE /* UIColor+CRONAlarmClock.swift in Sources */,

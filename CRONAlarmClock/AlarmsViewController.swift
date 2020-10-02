@@ -13,12 +13,6 @@ class AlarmsViewController: UITableViewController {
     
     var alarmStore: AlarmStore!
     
-    private var deleteSymbol: UIImage? {
-        let symbolConfig = UIImage.SymbolConfiguration(weight: .semibold)
-        let symbol = UIImage(systemName: "minus.circle", withConfiguration: symbolConfig)
-        return symbol?.withTintColor(UIColor.accent, renderingMode: .alwaysOriginal)
-    }
-    
     /* Interface Builder methods */
 
     @IBAction func addNewAlarm(_ sender: UIBarButtonItem) {
@@ -69,7 +63,7 @@ class AlarmsViewController: UITableViewController {
             completionHandler(true)
         }
 
-        deleteAction.image = deleteSymbol
+        deleteAction.image = CustomSymbols.deleteSymbol
         deleteAction.image?.accessibilityIdentifier = "Delete"
         deleteAction.backgroundColor = UIColor.dark
         
