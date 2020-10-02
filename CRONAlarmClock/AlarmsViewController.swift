@@ -13,11 +13,10 @@ class AlarmsViewController: UITableViewController {
     
     var alarmStore: AlarmStore!
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        navigationItem.leftBarButtonItem = editButtonItem
-        navigationItem.leftBarButtonItem!.tintColor = UIColor.accent
+    private var deleteSymbol: UIImage? {
+        let symbolConfig = UIImage.SymbolConfiguration(weight: .semibold)
+        let symbol = UIImage(systemName: "minus.circle", withConfiguration: symbolConfig)
+        return symbol?.withTintColor(UIColor.accent, renderingMode: .alwaysOriginal)
     }
     
     /* Interface Builder methods */
@@ -60,16 +59,24 @@ class AlarmsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView,
-                            commit editingStyle: UITableViewCell.EditingStyle,
-                            forRowAt indexPath: IndexPath) {
-        switch editingStyle {
-        case .delete:
-            let alarm = alarmStore.alarms[indexPath.row]
-            alarmStore.removeAlarm(alarm)
+                            leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "") {
+            (action, view, completionHandler) in
+            
+            let alarm = self.alarmStore.alarms[indexPath.row]
+            self.alarmStore.removeAlarm(alarm)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-        default:
-            print("no implementation for \(editingStyle)")
+            completionHandler(true)
         }
+
+        deleteAction.image = deleteSymbol
+        deleteAction.image?.accessibilityIdentifier = "Delete"
+        deleteAction.backgroundColor = UIColor.dark
+        
+        let config = UISwipeActionsConfiguration(actions: [deleteAction])
+        config.performsFirstActionWithFullSwipe = false
+        
+        return config
     }
 }
 
