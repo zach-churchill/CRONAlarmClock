@@ -58,5 +58,18 @@ class AlarmsViewController: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCell.EditingStyle,
+                            forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            let alarm = alarmStore.alarms[indexPath.row]
+            alarmStore.removeAlarm(alarm)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        default:
+            print("no implementation for \(editingStyle)")
+        }
+    }
 }
 

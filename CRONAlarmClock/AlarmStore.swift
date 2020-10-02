@@ -15,4 +15,10 @@ class AlarmStore {
         let alarm = Alarm()
         alarms.append(alarm)
     }
+    
+    func removeAlarm(_ alarm: Alarm) {
+        if let index = alarms.firstIndex(of: alarm) {
+            alarms.remove(at: index)
+        }
+    }
 }
