@@ -53,7 +53,7 @@ class AlarmsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView,
-                            leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+                            trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "") {
             (action, view, completionHandler) in
             
