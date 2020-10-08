@@ -22,6 +22,7 @@
 		0CA7E3C1252F591500B72FFF /* AlarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA7E3C0252F591500B72FFF /* AlarmTests.swift */; };
 		0CA7E3CC252F5CAE00B72FFF /* CRONExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA7E3CB252F5CAE00B72FFF /* CRONExpressionTests.swift */; };
 		0CA7E3D1252F5CFE00B72FFF /* CRONExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA7E3D0252F5CFE00B72FFF /* CRONExpression.swift */; };
+		0CA7E3DC252F92B500B72FFF /* UIColor+CRONAlarmClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA7E3DB252F92B500B72FFF /* UIColor+CRONAlarmClockTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		0CA7E3C0252F591500B72FFF /* AlarmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTests.swift; sourceTree = "<group>"; };
 		0CA7E3CB252F5CAE00B72FFF /* CRONExpressionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRONExpressionTests.swift; sourceTree = "<group>"; };
 		0CA7E3D0252F5CFE00B72FFF /* CRONExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRONExpression.swift; sourceTree = "<group>"; };
+		0CA7E3DB252F92B500B72FFF /* UIColor+CRONAlarmClockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CRONAlarmClockTests.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				0C712AA125254C2A00D28ABE /* Info.plist */,
 				0CA7E3C0252F591500B72FFF /* AlarmTests.swift */,
 				0CA7E3CB252F5CAE00B72FFF /* CRONExpressionTests.swift */,
+				0CA7E3DB252F92B500B72FFF /* UIColor+CRONAlarmClockTests.swift */,
 			);
 			path = CRONAlarmClockTests;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CA7E3DC252F92B500B72FFF /* UIColor+CRONAlarmClockTests.swift in Sources */,
 				0CA7E3C1252F591500B72FFF /* AlarmTests.swift in Sources */,
 				0CA7E3CC252F5CAE00B72FFF /* CRONExpressionTests.swift in Sources */,
 			);
