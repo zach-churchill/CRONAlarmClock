@@ -13,11 +13,11 @@ class CRONExpressionTests: XCTestCase {
     func testComponentsDefaultToStars() {
         let cronExpression = CRONExpression()
         
-        XCTAssert(cronExpression.minute == "*")
-        XCTAssert(cronExpression.hour == "*")
-        XCTAssert(cronExpression.dayOfMonth == "*")
-        XCTAssert(cronExpression.month == "*")
-        XCTAssert(cronExpression.dayOfWeek == "*")
+        XCTAssert(cronExpression.minute == CRONExpression.star)
+        XCTAssert(cronExpression.hour == CRONExpression.star)
+        XCTAssert(cronExpression.dayOfMonth == CRONExpression.star)
+        XCTAssert(cronExpression.month == CRONExpression.star)
+        XCTAssert(cronExpression.dayOfWeek == CRONExpression.star)
     }
 
 }

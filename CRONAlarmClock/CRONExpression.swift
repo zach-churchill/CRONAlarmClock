@@ -8,9 +8,12 @@
 import UIKit
 
 class CRONExpression {
-    var minute: String = "*"
-    var hour: String = "*"
-    var dayOfMonth: String = "*"
-    var month: String = "*"
-    var dayOfWeek: String = "*"
+    
+    static let star: String = "*"
+
+    var minute: String = star
+    var hour: String = star
+    var dayOfMonth: String = star
+    var month: String = star
+    var dayOfWeek: String = star
 }
