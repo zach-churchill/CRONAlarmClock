@@ -56,6 +56,9 @@ class CRONExpression: Equatable {
     var dayOfMonth: String = star
     var month: String = star
     var dayOfWeek: String = star
+    var expression: String {
+        return "\(minute) \(hour) \(dayOfMonth) \(month) \(dayOfWeek)"
+    }
     
     static func ==(lhs: CRONExpression, rhs: CRONExpression) -> Bool {
         return lhs.minute == rhs.minute

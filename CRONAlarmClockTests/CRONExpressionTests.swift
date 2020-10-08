@@ -112,4 +112,12 @@ class CRONExpressionTests: XCTestCase {
         let expectedforeverAndAlways = try! CRONExpression()
         XCTAssert(foreverAndAlways == expectedforeverAndAlways)
     }
+    
+    func testReadOnlyExpressionProperty() {
+        let foreverAndAlways = try! CRONExpression()
+        XCTAssert(foreverAndAlways.expression == "* * * * *")
+
+        let sevenFifteen = try! CRONExpression.parseExpression(for: "15 7 * * *")
+        XCTAssert(sevenFifteen.expression == "15 7 * * *")
+    }
 }
