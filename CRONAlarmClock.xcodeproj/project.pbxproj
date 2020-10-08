@@ -20,6 +20,8 @@
 		0C712AD42525620100D28ABE /* AlarmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C712AD32525620100D28ABE /* AlarmStore.swift */; };
 		0C8F3AB42527F59700D136D8 /* CustomSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8F3AB32527F59700D136D8 /* CustomSymbols.swift */; };
 		0CA7E3C1252F591500B72FFF /* AlarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA7E3C0252F591500B72FFF /* AlarmTests.swift */; };
+		0CA7E3CC252F5CAE00B72FFF /* CRONExpressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA7E3CB252F5CAE00B72FFF /* CRONExpressionTests.swift */; };
+		0CA7E3D1252F5CFE00B72FFF /* CRONExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA7E3D0252F5CFE00B72FFF /* CRONExpression.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		0C712AD32525620100D28ABE /* AlarmStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmStore.swift; sourceTree = "<group>"; };
 		0C8F3AB32527F59700D136D8 /* CustomSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSymbols.swift; sourceTree = "<group>"; };
 		0CA7E3C0252F591500B72FFF /* AlarmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTests.swift; sourceTree = "<group>"; };
+		0CA7E3CB252F5CAE00B72FFF /* CRONExpressionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRONExpressionTests.swift; sourceTree = "<group>"; };
+		0CA7E3D0252F5CFE00B72FFF /* CRONExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRONExpression.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 				0C712ACE25255DC900D28ABE /* Alarm.swift */,
 				0C712AD32525620100D28ABE /* AlarmStore.swift */,
 				0C8F3AB32527F59700D136D8 /* CustomSymbols.swift */,
+				0CA7E3D0252F5CFE00B72FFF /* CRONExpression.swift */,
 			);
 			path = CRONAlarmClock;
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 			children = (
 				0C712AA125254C2A00D28ABE /* Info.plist */,
 				0CA7E3C0252F591500B72FFF /* AlarmTests.swift */,
+				0CA7E3CB252F5CAE00B72FFF /* CRONExpressionTests.swift */,
 			);
 			path = CRONAlarmClockTests;
 			sourceTree = "<group>";
@@ -277,6 +283,7 @@
 				0C712ACA2525567100D28ABE /* AlarmCell.swift in Sources */,
 				0C712AD42525620100D28ABE /* AlarmStore.swift in Sources */,
 				0C8F3AB42527F59700D136D8 /* CustomSymbols.swift in Sources */,
+				0CA7E3D1252F5CFE00B72FFF /* CRONExpression.swift in Sources */,
 				0C712A8D25254C2A00D28ABE /* AlarmsViewController.swift in Sources */,
 				0C712A8925254C2A00D28ABE /* AppDelegate.swift in Sources */,
 				0C712ABF252550C100D28ABE /* UIColor+CRONAlarmClock.swift in Sources */,
@@ -290,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CA7E3C1252F591500B72FFF /* AlarmTests.swift in Sources */,
+				0CA7E3CC252F5CAE00B72FFF /* CRONExpressionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
