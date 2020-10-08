@@ -95,4 +95,21 @@ class CRONExpressionTests: XCTestCase {
         
         XCTAssert(cron1 == cron2)
     }
+    
+    func testExpressionParsingStaticFunctionReturnsCorrectObject() {
+        let sevenFifteen = try! CRONExpression.parseExpression(for: "15 7 * * *")
+        let expectedSevenFifteen = try! CRONExpression(minute: 15, hour: 7)
+        XCTAssert(sevenFifteen == expectedSevenFifteen)
+        
+        let noonOnFebruaryFifth = try! CRONExpression.parseExpression(for: "0 12 5 2 *")
+        let expectednoonOnFebruaryFifth = try! CRONExpression(minute: 0,
+                                                              hour: 12,
+                                                              dayOfMonth: 5,
+                                                              month: 2)
+        XCTAssert(noonOnFebruaryFifth == expectednoonOnFebruaryFifth)
+        
+        let foreverAndAlways = try! CRONExpression.parseExpression(for: "* * * * *")
+        let expectedforeverAndAlways = try! CRONExpression()
+        XCTAssert(foreverAndAlways == expectedforeverAndAlways)
+    }
 }
