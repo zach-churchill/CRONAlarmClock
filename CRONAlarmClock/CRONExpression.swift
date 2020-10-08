@@ -10,6 +10,7 @@ import UIKit
 enum InvalidCRONExpression: LocalizedError {
     case invalidMinute
     case invalidHour
+    case invalidDayOfMonth
     
     var errorDescription: String? {
         switch self {
@@ -17,6 +18,8 @@ enum InvalidCRONExpression: LocalizedError {
             return "minute must be '*' or between 0 and 59, inclusive"
         case .invalidHour:
             return "hour must be '*' or between 0 and 23, inclusive"
+        case .invalidDayOfMonth:
+            return "dayOfMonth must be '*' or between 1 and 31, inclusive"
         }
     }
 }
@@ -31,26 +34,41 @@ class CRONExpression {
     var month: String = star
     var dayOfWeek: String = star
     
+    private func checkBounds(parameter: Int,
+                             lowerBound: Int,
+                             upperBound: Int,
+                             error: Error) throws -> String {
+        if (parameter < lowerBound || parameter > upperBound) {
+            throw error
+        }
+        
+        return String(parameter)
+    }
+    
     init(minute: Int? = nil,
-         hour: Int? = nil) throws {
+         hour: Int? = nil,
+         dayOfMonth: Int? = nil) throws {
         if let minute = minute {
-            if (minute < 0 || minute > 59) {
-                throw InvalidCRONExpression.invalidMinute
-            } else {
-                self.minute = String(minute)
-            }
-        } else {
-            self.minute = CRONExpression.star
+            self.minute = try checkBounds(parameter: minute,
+                                          lowerBound: 0,
+                                          upperBound: 59,
+                                          error: InvalidCRONExpression.invalidMinute)
         }
             
         if let hour = hour {
-            if (hour < 0 || hour > 23) {
-                throw InvalidCRONExpression.invalidHour
-            } else {
-                self.hour = String(hour)
-            }
-        } else {
-            self.hour = CRONExpression.star
+            self.hour = try checkBounds(parameter: hour,
+                                        lowerBound: 0,
+                                        upperBound: 23,
+                                        error: InvalidCRONExpression.invalidHour)
+
+        }
+        
+        if let dayOfMonth = dayOfMonth {
+            self.dayOfMonth = try checkBounds(parameter: dayOfMonth,
+                                              lowerBound: 1,
+                                              upperBound: 31,
+                                              error: InvalidCRONExpression.invalidDayOfMonth)
+
         }
     }
 }
