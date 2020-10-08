@@ -155,4 +155,12 @@ class CRONExpression: Equatable {
             throw InvalidCRONExpression.invalidExpression
         }
     }
+    
+    convenience init(fromCRONExpression cronExpression: CRONExpression) {
+        try! self.init(minute: Int(cronExpression.minute),
+                       hour: Int(cronExpression.hour),
+                       dayOfMonth: Int(cronExpression.dayOfMonth),
+                       month: Int(cronExpression.month),
+                       dayOfWeek: Int(cronExpression.dayOfWeek))
+    }
 }
