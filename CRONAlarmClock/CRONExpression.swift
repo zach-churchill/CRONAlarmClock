@@ -12,6 +12,7 @@ enum InvalidCRONExpression: LocalizedError {
     case invalidHour
     case invalidDayOfMonth
     case invalidMonth
+    case invalidDayOfWeek
     
     var errorDescription: String? {
         switch self {
@@ -23,6 +24,8 @@ enum InvalidCRONExpression: LocalizedError {
             return "dayOfMonth must be '*' or between 1 and 31, inclusive"
         case .invalidMonth:
             return "month must be '*' or between 1 and 12, inclusive"
+        case .invalidDayOfWeek:
+            return "dayOfWeek must be '*' or between 0 and 6, inclusive"
         }
     }
 }
@@ -47,6 +50,7 @@ class CRONExpression {
         "hour": CRONFieldBounds(lowerBound: 0, upperBound: 23),
         "dayOfMonth": CRONFieldBounds(lowerBound: 1, upperBound: 31),
         "month": CRONFieldBounds(lowerBound: 1, upperBound: 12),
+        "dayOfWeek": CRONFieldBounds(lowerBound: 0, upperBound: 6),
     ]
     
     private func throwAppropriateExpressionError(for parameterType: String) throws {
@@ -59,6 +63,8 @@ class CRONExpression {
             throw InvalidCRONExpression.invalidDayOfMonth
         case "month":
             throw InvalidCRONExpression.invalidMonth
+        case "dayOfWeek":
+            throw InvalidCRONExpression.invalidDayOfWeek
         default:
             preconditionFailure("unexcepted parameter type: \(parameterType)")
         }
@@ -80,7 +86,8 @@ class CRONExpression {
     init(minute: Int? = nil,
          hour: Int? = nil,
          dayOfMonth: Int? = nil,
-         month: Int? = nil) throws {
+         month: Int? = nil,
+         dayOfWeek: Int? = nil) throws {
         if let minute = minute {
             self.minute = try checkBounds(for: "minute", parameter: minute)
         }
@@ -97,6 +104,10 @@ class CRONExpression {
         
         if let month = month {
             self.month = try checkBounds(for: "month", parameter: month)
+        }
+        
+        if let dayOfWeek = dayOfWeek {
+            self.dayOfWeek = try checkBounds(for: "dayOfWeek", parameter: dayOfWeek)
         }
     }
 }
