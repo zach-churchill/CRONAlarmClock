@@ -18,7 +18,10 @@ class Alarm: Equatable {
     var description: String?
     var isActive: Bool
     
-    init(time: String, period: Period, description: String?, isActive: Bool) {
+    init(time: String,
+         period: Period,
+         description: String? = "",
+         isActive: Bool) {
         self.time = time
         self.period = period
         self.description = description
