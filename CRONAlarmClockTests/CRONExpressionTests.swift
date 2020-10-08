@@ -94,4 +94,11 @@ class CRONExpressionTests: XCTestCase {
         XCTAssertThrowsError(try CRONExpression(fromExpression: "* * * *"))
         XCTAssertThrowsError(try CRONExpression(fromExpression: "-1 12 300 * 1000"))
     }
+    
+    func testConformsToEquatableProtocol() {
+        let cron1 = try! CRONExpression(fromExpression: "15 7 * * *")
+        let cron2 = try! CRONExpression(fromExpression: "15 7 * * *")
+        
+        XCTAssert(cron1 == cron2)
+    }
 }

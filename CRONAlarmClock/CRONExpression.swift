@@ -39,7 +39,7 @@ struct CRONFieldBounds {
     let upperBound: Int
 }
 
-class CRONExpression {
+class CRONExpression: Equatable {
     
     static let star: String = "*"
 
@@ -48,6 +48,14 @@ class CRONExpression {
     var dayOfMonth: String = star
     var month: String = star
     var dayOfWeek: String = star
+    
+    static func ==(lhs: CRONExpression, rhs: CRONExpression) -> Bool {
+        return lhs.minute == rhs.minute
+            && lhs.hour == rhs.hour
+            && lhs.dayOfMonth == rhs.dayOfMonth
+            && lhs.month == rhs.month
+            && lhs.dayOfWeek == rhs.dayOfWeek
+    }
     
     private let expressionRegex = try! NSRegularExpression(pattern: "((([0-9]+,)+[0-9]+|([0-9]+(\\/|-)[0-9]+)|[0-9]+|\\*) ?){5}")
     
