@@ -14,6 +14,8 @@ enum InvalidCRONExpression: LocalizedError {
     case invalidMonth
     case invalidDayOfWeek
     
+    case invalidExpression
+    
     var errorDescription: String? {
         switch self {
         case .invalidMinute:
@@ -26,6 +28,8 @@ enum InvalidCRONExpression: LocalizedError {
             return "month must be '*' or between 1 and 12, inclusive"
         case .invalidDayOfWeek:
             return "dayOfWeek must be '*' or between 0 and 6, inclusive"
+        case .invalidExpression:
+            return "provide CRON expression is invalid"
         }
     }
 }
@@ -44,6 +48,8 @@ class CRONExpression {
     var dayOfMonth: String = star
     var month: String = star
     var dayOfWeek: String = star
+    
+    private let expressionRegex = try! NSRegularExpression(pattern: "((([0-9]+,)+[0-9]+|([0-9]+(\\/|-)[0-9]+)|[0-9]+|\\*) ?){5}")
     
     private let parameterBounds: [String: CRONFieldBounds] = [
         "minute": CRONFieldBounds(lowerBound: 0, upperBound: 59),
@@ -108,6 +114,22 @@ class CRONExpression {
         
         if let dayOfWeek = dayOfWeek {
             self.dayOfWeek = try checkBounds(for: "dayOfWeek", parameter: dayOfWeek)
+        }
+    }
+    
+    convenience init(fromExpression expression: String) throws {
+        try self.init()
+        
+        let range = NSRange(location: 0, length: expression.utf16.count)
+        if let _ = expressionRegex.firstMatch(in: expression, options: [], range: range) {
+            let fields = expression.split(separator: " ").map { String($0) }
+            try self.init(minute: Int(fields[0]),
+                          hour: Int(fields[1]),
+                          dayOfMonth: Int(fields[2]),
+                          month: Int(fields[3]),
+                          dayOfWeek: Int(fields[4]))
+        } else {
+            throw InvalidCRONExpression.invalidExpression
         }
     }
 }
