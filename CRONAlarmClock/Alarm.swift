@@ -21,7 +21,7 @@ class Alarm: Equatable {
     init(time: String,
          period: Period,
          description: String? = "",
-         isActive: Bool) {
+         isActive: Bool = true) {
         self.time = time
         self.period = period
         self.description = description

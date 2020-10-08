@@ -15,5 +15,13 @@ class AlarmTests: XCTestCase {
         
         XCTAssert(alarm.description == "")
     }
+    
+    func testDefaultsToActiveAlarm() {
+        let alarm = Alarm(time: "7:15",
+                          period: .AM,
+                          description: "Should be active")
+        
+        XCTAssertTrue(alarm.isActive)
+    }
 
 }
