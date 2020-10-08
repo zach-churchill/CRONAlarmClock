@@ -67,25 +67,19 @@ class CRONExpressionTests: XCTestCase {
     
     func testStandardFormatProducesCorrectObject() {
         let foreverAndAlways = try! CRONExpression(fromExpression: "* * * * *")
-        XCTAssert(foreverAndAlways.minute == CRONExpression.star)
-        XCTAssert(foreverAndAlways.hour == CRONExpression.star)
-        XCTAssert(foreverAndAlways.dayOfMonth == CRONExpression.star)
-        XCTAssert(foreverAndAlways.month == CRONExpression.star)
-        XCTAssert(foreverAndAlways.dayOfWeek == CRONExpression.star)
+        let expectedForeverAndAlways = try! CRONExpression()
+        XCTAssert(foreverAndAlways == expectedForeverAndAlways)
         
         let sevenFifteenEveryDay = try! CRONExpression(fromExpression: "15 7 * * *")
-        XCTAssert(sevenFifteenEveryDay.minute == "15")
-        XCTAssert(sevenFifteenEveryDay.hour == "7")
-        XCTAssert(sevenFifteenEveryDay.dayOfMonth == CRONExpression.star)
-        XCTAssert(sevenFifteenEveryDay.month == CRONExpression.star)
-        XCTAssert(sevenFifteenEveryDay.dayOfWeek == CRONExpression.star)
+        let expectedSevenFifteenEveryDay = try! CRONExpression(minute: 15, hour: 7)
+        XCTAssert(sevenFifteenEveryDay == expectedSevenFifteenEveryDay)
         
         let noonOnFebruaryFifth = try! CRONExpression(fromExpression: "0 12 5 2 *")
-        XCTAssert(noonOnFebruaryFifth.minute == "0")
-        XCTAssert(noonOnFebruaryFifth.hour == "12")
-        XCTAssert(noonOnFebruaryFifth.dayOfMonth == "5")
-        XCTAssert(noonOnFebruaryFifth.month == "2")
-        XCTAssert(noonOnFebruaryFifth.dayOfWeek == CRONExpression.star)
+        let expectedNoonOnFebruaryFifth = try! CRONExpression(minute: 0,
+                                                              hour: 12,
+                                                              dayOfMonth: 5,
+                                                              month: 2)
+        XCTAssert(noonOnFebruaryFifth == expectedNoonOnFebruaryFifth)
     }
     
     func testInvalidStandardFormatThrowsError() {
