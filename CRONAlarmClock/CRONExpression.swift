@@ -34,6 +34,14 @@ enum InvalidCRONExpression: LocalizedError {
     }
 }
 
+enum CRONField {
+    case Minute
+    case Hour
+    case DayOfMonth
+    case Month
+    case DayOfWeek
+}
+
 struct CRONFieldBounds {
     let lowerBound: Int
     let upperBound: Int
@@ -72,41 +80,41 @@ class CRONExpression: Equatable {
         }
     }
     
-    private let expressionRegex = try! NSRegularExpression(pattern: "((([0-9]+,)+[0-9]+|([0-9]+(\\/|-)[0-9]+)|[0-9]+|\\*) ?){5}")
-    
-    private let parameterBounds: [String: CRONFieldBounds] = [
-        "minute": CRONFieldBounds(lowerBound: 0, upperBound: 59),
-        "hour": CRONFieldBounds(lowerBound: 0, upperBound: 23),
-        "dayOfMonth": CRONFieldBounds(lowerBound: 1, upperBound: 31),
-        "month": CRONFieldBounds(lowerBound: 1, upperBound: 12),
-        "dayOfWeek": CRONFieldBounds(lowerBound: 0, upperBound: 6),
-    ]
-    
-    private func throwAppropriateExpressionError(for parameterType: String) throws {
-        switch parameterType {
-        case "minute":
-            throw InvalidCRONExpression.invalidMinute
-        case "hour":
-            throw InvalidCRONExpression.invalidHour
-        case "dayOfMonth":
-            throw InvalidCRONExpression.invalidDayOfMonth
-        case "month":
-            throw InvalidCRONExpression.invalidMonth
-        case "dayOfWeek":
-            throw InvalidCRONExpression.invalidDayOfWeek
-        default:
-            preconditionFailure("unexcepted parameter type: \(parameterType)")
+    private func getCRONFieldBounds(for cronField: CRONField) -> CRONFieldBounds {
+        switch cronField {
+        case .Minute:
+            return CRONFieldBounds(lowerBound: 0, upperBound: 59)
+        case .Hour:
+            return CRONFieldBounds(lowerBound: 0, upperBound: 23)
+        case .DayOfMonth:
+            return CRONFieldBounds(lowerBound: 1, upperBound: 31)
+        case .Month:
+            return CRONFieldBounds(lowerBound: 1, upperBound: 12)
+        case .DayOfWeek:
+            return CRONFieldBounds(lowerBound: 0, upperBound: 6)
         }
     }
     
-    private func checkBounds(for parameterType: String,
+    private func throwAppropriateExpressionError(for cronField: CRONField) throws {
+        switch cronField {
+        case .Minute:
+            throw InvalidCRONExpression.invalidMinute
+        case .Hour:
+            throw InvalidCRONExpression.invalidHour
+        case .DayOfMonth:
+            throw InvalidCRONExpression.invalidDayOfMonth
+        case .Month:
+            throw InvalidCRONExpression.invalidMonth
+        case .DayOfWeek:
+            throw InvalidCRONExpression.invalidDayOfWeek
+        }
+    }
+    
+    private func checkBounds(for cronField: CRONField,
                              parameter: Int) throws -> String {
-        if let bounds = parameterBounds[parameterType] {
-            if (parameter < bounds.lowerBound || parameter > bounds.upperBound) {
-                try throwAppropriateExpressionError(for: parameterType)
-            }
-        } else {
-            preconditionFailure("unexpected parameter type: \(parameterType)")
+        let bounds = getCRONFieldBounds(for: cronField)
+        if (parameter < bounds.lowerBound || parameter > bounds.upperBound) {
+            try throwAppropriateExpressionError(for: cronField)
         }
         
         return String(parameter)
@@ -118,25 +126,23 @@ class CRONExpression: Equatable {
          month: Int? = nil,
          dayOfWeek: Int? = nil) throws {
         if let minute = minute {
-            self.minute = try checkBounds(for: "minute", parameter: minute)
+            self.minute = try checkBounds(for: .Minute, parameter: minute)
         }
             
         if let hour = hour {
-            self.hour = try checkBounds(for: "hour", parameter: hour)
-
+            self.hour = try checkBounds(for: .Hour, parameter: hour)
         }
         
         if let dayOfMonth = dayOfMonth {
-            self.dayOfMonth = try checkBounds(for: "dayOfMonth", parameter: dayOfMonth)
-
+            self.dayOfMonth = try checkBounds(for: .DayOfMonth, parameter: dayOfMonth)
         }
         
         if let month = month {
-            self.month = try checkBounds(for: "month", parameter: month)
+            self.month = try checkBounds(for: .Month, parameter: month)
         }
         
         if let dayOfWeek = dayOfWeek {
-            self.dayOfWeek = try checkBounds(for: "dayOfWeek", parameter: dayOfWeek)
+            self.dayOfWeek = try checkBounds(for: .DayOfWeek, parameter: dayOfWeek)
         }
     }
     
