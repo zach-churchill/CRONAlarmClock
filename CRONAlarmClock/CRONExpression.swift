@@ -24,6 +24,11 @@ enum InvalidCRONExpression: LocalizedError {
     }
 }
 
+struct CRONFieldBounds {
+    let lowerBound: Int
+    let upperBound: Int
+}
+
 class CRONExpression {
     
     static let star: String = "*"
@@ -34,12 +39,33 @@ class CRONExpression {
     var month: String = star
     var dayOfWeek: String = star
     
-    private func checkBounds(parameter: Int,
-                             lowerBound: Int,
-                             upperBound: Int,
-                             error: Error) throws -> String {
-        if (parameter < lowerBound || parameter > upperBound) {
-            throw error
+    private let parameterBounds: [String: CRONFieldBounds] = [
+        "minute": CRONFieldBounds(lowerBound: 0, upperBound: 59),
+        "hour": CRONFieldBounds(lowerBound: 0, upperBound: 23),
+        "dayOfMonth": CRONFieldBounds(lowerBound: 1, upperBound: 31),
+    ]
+    
+    private func throwAppropriateExpressionError(for parameterType: String) throws {
+        switch parameterType {
+        case "minute":
+            throw InvalidCRONExpression.invalidMinute
+        case "hour":
+            throw InvalidCRONExpression.invalidHour
+        case "dayOfMonth":
+            throw InvalidCRONExpression.invalidDayOfMonth
+        default:
+            preconditionFailure("unexcepted parameter type: \(parameterType)")
+        }
+    }
+    
+    private func checkBounds(for parameterType: String,
+                             parameter: Int) throws -> String {
+        if let bounds = parameterBounds[parameterType] {
+            if (parameter < bounds.lowerBound || parameter > bounds.upperBound) {
+                try throwAppropriateExpressionError(for: parameterType)
+            }
+        } else {
+            preconditionFailure("unexpected parameter type: \(parameterType)")
         }
         
         return String(parameter)
@@ -49,25 +75,16 @@ class CRONExpression {
          hour: Int? = nil,
          dayOfMonth: Int? = nil) throws {
         if let minute = minute {
-            self.minute = try checkBounds(parameter: minute,
-                                          lowerBound: 0,
-                                          upperBound: 59,
-                                          error: InvalidCRONExpression.invalidMinute)
+            self.minute = try checkBounds(for: "minute", parameter: minute)
         }
             
         if let hour = hour {
-            self.hour = try checkBounds(parameter: hour,
-                                        lowerBound: 0,
-                                        upperBound: 23,
-                                        error: InvalidCRONExpression.invalidHour)
+            self.hour = try checkBounds(for: "hour", parameter: hour)
 
         }
         
         if let dayOfMonth = dayOfMonth {
-            self.dayOfMonth = try checkBounds(parameter: dayOfMonth,
-                                              lowerBound: 1,
-                                              upperBound: 31,
-                                              error: InvalidCRONExpression.invalidDayOfMonth)
+            self.dayOfMonth = try checkBounds(for: "dayOfMonth", parameter: dayOfMonth)
 
         }
     }
