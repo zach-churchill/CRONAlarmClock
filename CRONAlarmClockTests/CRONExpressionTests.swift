@@ -29,4 +29,12 @@ class CRONExpressionTests: XCTestCase {
         XCTAssertThrowsError(try CRONExpression(minute: 60))
     }
 
+    func testHourMustBeBetween0And23() {
+        XCTAssertNoThrow(try CRONExpression(hour: 0))
+        XCTAssertNoThrow(try CRONExpression(hour: 12))
+        XCTAssertNoThrow(try CRONExpression(hour: 23))
+        
+        XCTAssertThrowsError(try CRONExpression(hour: -1))
+        XCTAssertThrowsError(try CRONExpression(hour: 24))
+    }
 }
