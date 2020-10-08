@@ -29,7 +29,7 @@ enum InvalidCRONExpression: LocalizedError {
         case .invalidDayOfWeek:
             return "dayOfWeek must be '*' or between 0 and 6, inclusive"
         case .invalidExpression:
-            return "provide CRON expression is invalid"
+            return "provided CRON expression is invalid"
         }
     }
 }
