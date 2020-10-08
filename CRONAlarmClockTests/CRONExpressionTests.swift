@@ -46,4 +46,13 @@ class CRONExpressionTests: XCTestCase {
         XCTAssertThrowsError(try CRONExpression(dayOfMonth: 0))
         XCTAssertThrowsError(try CRONExpression(dayOfMonth: 32))
     }
+    
+    func testMonthMustBeBetween1And12() {
+        XCTAssertNoThrow(try CRONExpression(month: 1))
+        XCTAssertNoThrow(try CRONExpression(month: 6))
+        XCTAssertNoThrow(try CRONExpression(month: 12))
+        
+        XCTAssertThrowsError(try CRONExpression(month: 0))
+        XCTAssertThrowsError(try CRONExpression(month: 13))
+    }
 }

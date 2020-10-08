@@ -11,6 +11,7 @@ enum InvalidCRONExpression: LocalizedError {
     case invalidMinute
     case invalidHour
     case invalidDayOfMonth
+    case invalidMonth
     
     var errorDescription: String? {
         switch self {
@@ -20,6 +21,8 @@ enum InvalidCRONExpression: LocalizedError {
             return "hour must be '*' or between 0 and 23, inclusive"
         case .invalidDayOfMonth:
             return "dayOfMonth must be '*' or between 1 and 31, inclusive"
+        case .invalidMonth:
+            return "month must be '*' or between 1 and 12, inclusive"
         }
     }
 }
@@ -43,6 +46,7 @@ class CRONExpression {
         "minute": CRONFieldBounds(lowerBound: 0, upperBound: 59),
         "hour": CRONFieldBounds(lowerBound: 0, upperBound: 23),
         "dayOfMonth": CRONFieldBounds(lowerBound: 1, upperBound: 31),
+        "month": CRONFieldBounds(lowerBound: 1, upperBound: 12),
     ]
     
     private func throwAppropriateExpressionError(for parameterType: String) throws {
@@ -53,6 +57,8 @@ class CRONExpression {
             throw InvalidCRONExpression.invalidHour
         case "dayOfMonth":
             throw InvalidCRONExpression.invalidDayOfMonth
+        case "month":
+            throw InvalidCRONExpression.invalidMonth
         default:
             preconditionFailure("unexcepted parameter type: \(parameterType)")
         }
@@ -73,7 +79,8 @@ class CRONExpression {
     
     init(minute: Int? = nil,
          hour: Int? = nil,
-         dayOfMonth: Int? = nil) throws {
+         dayOfMonth: Int? = nil,
+         month: Int? = nil) throws {
         if let minute = minute {
             self.minute = try checkBounds(for: "minute", parameter: minute)
         }
@@ -86,6 +93,10 @@ class CRONExpression {
         if let dayOfMonth = dayOfMonth {
             self.dayOfMonth = try checkBounds(for: "dayOfMonth", parameter: dayOfMonth)
 
+        }
+        
+        if let month = month {
+            self.month = try checkBounds(for: "month", parameter: month)
         }
     }
 }
