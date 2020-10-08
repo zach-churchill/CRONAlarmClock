@@ -13,29 +13,48 @@ enum Period: String {
 }
 
 class Alarm: Equatable {
-    var time: String
-    var period: Period
+    var cronExpression: CRONExpression
     var description: String?
     var isActive: Bool
+    var time: String {
+        var alarmHours = "**"
+        var alarmMinutes = "**"
+        
+        if let hours = Int(cronExpression.hour) {
+            alarmHours = String(hours > 12 ? hours % 12 : hours)
+        }
+        
+        if let minutes = Int(cronExpression.minute) {
+            alarmMinutes = String(minutes)
+        }
+        
+        return "\(alarmHours):\(alarmMinutes.padding(toLength: 2, withPad: "0", startingAt: 0))"
+    }
+    var period: Period? {
+        var period: Period? = nil
+        
+        if let hours = Int(cronExpression.hour) {
+            period = hours >= 12 ? .PM : .AM
+        }
+        
+        return period
+    }
     
-    init(time: String,
-         period: Period,
+    init(cronExpression: CRONExpression,
          description: String? = "",
          isActive: Bool = true) {
-        self.time = time
-        self.period = period
+        self.cronExpression = cronExpression
         self.description = description
         self.isActive = isActive
     }
     
     convenience init() {
-        // Provide an example
-        self.init(time: "7:15", period: Period.AM, description: "work week", isActive: true)
+        let sevenFifteen = try! CRONExpression(fromExpression: "15 7 * * *")
+        self.init(cronExpression: sevenFifteen, description: "work week", isActive: true)
     }
     
     static func ==(lhs: Alarm, rhs: Alarm) -> Bool {
-        return lhs.time == rhs.time
-            && lhs.period == rhs.period
+        return lhs.cronExpression == rhs.cronExpression
             && lhs.description == rhs.description
             && lhs.isActive == rhs.isActive
     }

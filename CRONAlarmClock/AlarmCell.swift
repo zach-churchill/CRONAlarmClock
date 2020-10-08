@@ -16,7 +16,7 @@ class AlarmCell: UITableViewCell {
     
     func updateDetails(alarm: Alarm) {
         alarmLabel.text = alarm.time
-        periodLabel.text = alarm.period.rawValue.uppercased()
+        periodLabel.text = alarm.period?.rawValue
         descriptionLabel.text = alarm.description
         activateSwitch.isOn = alarm.isActive
     }
