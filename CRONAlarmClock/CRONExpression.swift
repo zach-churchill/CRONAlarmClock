@@ -141,22 +141,7 @@ class CRONExpression: Equatable {
     }
     
     convenience init(fromExpression expression: String) throws {
-        try self.init()
-        
-        let range = NSRange(location: 0, length: expression.utf16.count)
-        if let _ = expressionRegex.firstMatch(in: expression, options: [], range: range) {
-            let fields = expression.split(separator: " ").map { String($0) }
-            try self.init(minute: Int(fields[0]),
-                          hour: Int(fields[1]),
-                          dayOfMonth: Int(fields[2]),
-                          month: Int(fields[3]),
-                          dayOfWeek: Int(fields[4]))
-        } else {
-            throw InvalidCRONExpression.invalidExpression
-        }
-    }
-    
-    convenience init(fromCRONExpression cronExpression: CRONExpression) {
+        let cronExpression = try CRONExpression.parseExpression(for: expression)
         try! self.init(minute: Int(cronExpression.minute),
                        hour: Int(cronExpression.hour),
                        dayOfMonth: Int(cronExpression.dayOfMonth),

@@ -112,11 +112,4 @@ class CRONExpressionTests: XCTestCase {
         let expectedforeverAndAlways = try! CRONExpression()
         XCTAssert(foreverAndAlways == expectedforeverAndAlways)
     }
-    
-    func testCRONExpressionCanCreateNewCRONExpression() {
-        let existingCronExpression = try! CRONExpression()
-        let newCronExpression = CRONExpression(fromCRONExpression: existingCronExpression)
-        XCTAssert(newCronExpression == existingCronExpression)
-        
-    }
 }
