@@ -24,4 +24,10 @@ class AlarmTests: XCTestCase {
         XCTAssertTrue(alarm.isActive)
     }
 
+    func testConformsToEquatableProtocol() {
+        let alarm1 = Alarm(time: "7:15", period: .AM)
+        let alarm2 = Alarm(time: "7:15", period: .AM)
+        
+        XCTAssert(alarm1 == alarm2)
+    }
 }
