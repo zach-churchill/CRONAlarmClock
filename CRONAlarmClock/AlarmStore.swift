@@ -9,10 +9,14 @@ import UIKit
 
 class AlarmStore {
     
-    var alarms = [Alarm]()
+    private var alarms = [Alarm]()
+    var count: Int {
+        get {
+            return alarms.count
+        }
+    }
     
-    init() {
-        let alarm = Alarm()
+    func addAlarm(_ alarm: Alarm) {
         alarms.append(alarm)
     }
     
@@ -20,5 +24,16 @@ class AlarmStore {
         if let index = alarms.firstIndex(of: alarm) {
             alarms.remove(at: index)
         }
+    }
+    
+    func getAlarm(at index: Int) -> Alarm? {
+        if index < alarms.count {
+            return alarms[index]
+        }
+        return nil
+    }
+    
+    func firstIndex(of alarm: Alarm) -> Int? {
+        return alarms.firstIndex(of: alarm)
     }
 }

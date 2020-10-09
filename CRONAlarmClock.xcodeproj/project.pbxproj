@@ -24,6 +24,7 @@
 		0CA7E3D1252F5CFE00B72FFF /* CRONExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA7E3D0252F5CFE00B72FFF /* CRONExpression.swift */; };
 		0CA7E3DC252F92B500B72FFF /* UIColor+CRONAlarmClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA7E3DB252F92B500B72FFF /* UIColor+CRONAlarmClockTests.swift */; };
 		0CA7E3E1252F938B00B72FFF /* CustomSymbolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA7E3E0252F938B00B72FFF /* CustomSymbolsTests.swift */; };
+		0CF7F163252FF1BC00852B13 /* AlarmStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF7F162252FF1BC00852B13 /* AlarmStoreTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		0CA7E3D0252F5CFE00B72FFF /* CRONExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRONExpression.swift; sourceTree = "<group>"; };
 		0CA7E3DB252F92B500B72FFF /* UIColor+CRONAlarmClockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CRONAlarmClockTests.swift"; sourceTree = "<group>"; };
 		0CA7E3E0252F938B00B72FFF /* CustomSymbolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSymbolsTests.swift; sourceTree = "<group>"; };
+		0CF7F162252FF1BC00852B13 /* AlarmStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmStoreTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 				0CA7E3CB252F5CAE00B72FFF /* CRONExpressionTests.swift */,
 				0CA7E3DB252F92B500B72FFF /* UIColor+CRONAlarmClockTests.swift */,
 				0CA7E3E0252F938B00B72FFF /* CustomSymbolsTests.swift */,
+				0CF7F162252FF1BC00852B13 /* AlarmStoreTests.swift */,
 			);
 			path = CRONAlarmClockTests;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				0CA7E3DC252F92B500B72FFF /* UIColor+CRONAlarmClockTests.swift in Sources */,
 				0CA7E3C1252F591500B72FFF /* AlarmTests.swift in Sources */,
 				0CA7E3E1252F938B00B72FFF /* CustomSymbolsTests.swift in Sources */,
+				0CF7F163252FF1BC00852B13 /* AlarmStoreTests.swift in Sources */,
 				0CA7E3CC252F5CAE00B72FFF /* CRONExpressionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

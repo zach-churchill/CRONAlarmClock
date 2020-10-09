@@ -18,9 +18,9 @@ class AlarmsViewController: UITableViewController {
     @IBAction func addNewAlarm(_ sender: UIBarButtonItem) {
         // Just use dummy alarm for time being
         let alarm = Alarm()
-        alarmStore.alarms.append(alarm)
+        alarmStore.addAlarm(alarm)
         
-        if let index = alarmStore.alarms.firstIndex(of: alarm) {
+        if let index = alarmStore.firstIndex(of: alarm) {
             let indexPath = IndexPath(row: index, section: 0)
             tableView.insertRows(at: [indexPath], with: .automatic)
         }
@@ -37,7 +37,7 @@ class AlarmsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
-        return alarmStore.alarms.count
+        return alarmStore.count
     }
     
     override func tableView(_ tableView: UITableView,
@@ -46,7 +46,7 @@ class AlarmsViewController: UITableViewController {
                                                  for: indexPath) as! AlarmCell
         
         // Our table will only ever have one section, so just use row to get alarm
-        let alarm = alarmStore.alarms[indexPath.row]
+        let alarm = alarmStore.getAlarm(at: indexPath.row)!
         cell.updateDetails(alarm: alarm)
         
         return cell
@@ -57,7 +57,7 @@ class AlarmsViewController: UITableViewController {
         let deleteAction = UIContextualAction(style: .destructive, title: "") {
             (action, view, completionHandler) in
             
-            let alarm = self.alarmStore.alarms[indexPath.row]
+            let alarm = self.alarmStore.getAlarm(at: indexPath.row)!
             self.alarmStore.removeAlarm(alarm)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             completionHandler(true)
