@@ -13,6 +13,17 @@ class EditAlarmViewController: UIViewController, UITextFieldDelegate {
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
+    @IBAction func needHelp(_ sender: UIButton) {
+        let helpMessage = "Minutes should be between 0-59, hours between 0-23, " +
+                          "day of month between 1-31, month between 1-12, and " +
+                          "day of week between 0-6.\n" +
+                          "Use * to target every value in the field."
+        let alert = UIAlertController(title: "CRON syntax help",
+                                      message: helpMessage,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+    }
     @IBAction func saveExpression(_ sender: UIButton) {
         if let enteredExpression = cronInput.text {
             if CRONExpression.isValid(for: enteredExpression) {
