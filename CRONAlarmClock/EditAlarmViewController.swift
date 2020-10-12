@@ -16,7 +16,8 @@ class EditAlarmViewController: UIViewController, UITextFieldDelegate {
     @IBAction func saveExpression(_ sender: UIButton) {
         if let enteredExpression = cronInput.text {
             if CRONExpression.isValid(for: enteredExpression) {
-                print("Expression is valid")
+                let cronExpression = try! CRONExpression.parseExpression(for: enteredExpression)
+                alarm.cronExpression = cronExpression
                 cronInput.textColor = .light
             } else {
                 print("Expression is not valid")
@@ -33,6 +34,8 @@ class EditAlarmViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
         cronInput.text = alarm.cronExpression.expression
     }
 }
