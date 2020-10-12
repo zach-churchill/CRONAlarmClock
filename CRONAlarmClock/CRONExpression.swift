@@ -68,16 +68,32 @@ class CRONExpression: Equatable {
             && lhs.dayOfWeek == rhs.dayOfWeek
     }
     
-    static func parseExpression(for expression: String) throws -> CRONExpression {
-        let regex = try! NSRegularExpression(pattern: "((([0-9]+,)+[0-9]+|([0-9]+(\\/|-)[0-9]+)|[0-9]+|\\*) ?){5}")
+    private static func createObjectFromExpression(for expression: String) throws -> CRONExpression {
+        let fields = expression.split(separator: " ").map { String($0) }
+        return try CRONExpression(minute: Int(fields[0]),
+                                  hour: Int(fields[1]),
+                                  dayOfMonth: Int(fields[2]),
+                                  month: Int(fields[3]),
+                                  dayOfWeek: Int(fields[4]))
+    }
+    
+    static func isValid(for expression: String) -> Bool {
+        let regex = try! NSRegularExpression(pattern: "^(([0-9]{1,}|\\*) ){4}([0-9]{1,}|\\*)")
         let range = NSRange(location: 0, length: expression.utf16.count)
         if let _ = regex.firstMatch(in: expression, options: [], range: range) {
-            let fields = expression.split(separator: " ").map { String($0) }
-            return try CRONExpression(minute: Int(fields[0]),
-                                      hour: Int(fields[1]),
-                                      dayOfMonth: Int(fields[2]),
-                                      month: Int(fields[3]),
-                                      dayOfWeek: Int(fields[4]))
+            do {
+                let _ = try CRONExpression.createObjectFromExpression(for: expression)
+            } catch {
+                return false
+            }
+            return true
+        }
+        return false
+    }
+    
+    static func parseExpression(for expression: String) throws -> CRONExpression {
+        if CRONExpression.isValid(for: expression){
+            return try CRONExpression.createObjectFromExpression(for: expression)
         } else {
             throw InvalidCRONExpression.invalidExpression
         }

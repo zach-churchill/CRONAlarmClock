@@ -96,6 +96,17 @@ class CRONExpressionTests: XCTestCase {
         XCTAssert(cron1 == cron2)
     }
     
+    func testExpressionsCorrectlyDistinguishedAsValid() {
+        XCTAssertTrue(CRONExpression.isValid(for: "* * * * *"))
+        XCTAssertTrue(CRONExpression.isValid(for: "15 7 * * *"))
+        XCTAssertTrue(CRONExpression.isValid(for: "0 15 * * 5"))
+        
+        XCTAssertFalse(CRONExpression.isValid(for: "* * * *"))
+        XCTAssertFalse(CRONExpression.isValid(for: "30 7 * *"))
+        XCTAssertFalse(CRONExpression.isValid(for: "-1 * * * *"))
+        XCTAssertFalse(CRONExpression.isValid(for: "500 12 300 * 1000"))
+    }
+    
     func testExpressionParsingStaticFunctionReturnsCorrectObject() {
         let sevenFifteen = try! CRONExpression.parseExpression(for: "15 7 * * *")
         let expectedSevenFifteen = try! CRONExpression(minute: 15, hour: 7)
