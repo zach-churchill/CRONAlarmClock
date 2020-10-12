@@ -105,6 +105,7 @@ class CRONExpressionTests: XCTestCase {
         XCTAssertFalse(CRONExpression.isValid(for: "30 7 * *"))
         XCTAssertFalse(CRONExpression.isValid(for: "-1 * * * *"))
         XCTAssertFalse(CRONExpression.isValid(for: "500 12 300 * 1000"))
+        XCTAssertFalse(CRONExpression.isValid(for: "15 7 * * ***"))
     }
     
     func testExpressionParsingStaticFunctionReturnsCorrectObject() {

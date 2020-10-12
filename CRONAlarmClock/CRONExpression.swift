@@ -78,7 +78,7 @@ class CRONExpression: Equatable {
     }
     
     static func isValid(for expression: String) -> Bool {
-        let regex = try! NSRegularExpression(pattern: "^(([0-9]{1,}|\\*) ){4}([0-9]{1,}|\\*)")
+        let regex = try! NSRegularExpression(pattern: "^(([0-9]{1,}|\\*) ){4}([0-9]{1,}|\\*)$")
         let range = NSRange(location: 0, length: expression.utf16.count)
         if let _ = regex.firstMatch(in: expression, options: [], range: range) {
             do {
