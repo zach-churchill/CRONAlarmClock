@@ -13,6 +13,17 @@ class EditAlarmViewController: UIViewController, UITextFieldDelegate {
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
+    @IBAction func saveExpression(_ sender: UIButton) {
+        if let enteredExpression = cronInput.text {
+            if CRONExpression.isValid(for: enteredExpression) {
+                print("Expression is valid")
+                cronInput.textColor = .light
+            } else {
+                print("Expression is not valid")
+                cronInput.textColor = .red
+            }
+        }
+    }
     
     var alarm: Alarm!
     
