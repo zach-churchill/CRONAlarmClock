@@ -20,7 +20,12 @@ class EditAlarmViewController: UIViewController, UITextFieldDelegate {
                 alarm.cronExpression = cronExpression
                 cronInput.textColor = .light
             } else {
-                print("Expression is not valid")
+                let alert = UIAlertController(title: "Invalid CRON Expression",
+                                              message: nil,
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+
                 cronInput.textColor = .red
             }
         }
