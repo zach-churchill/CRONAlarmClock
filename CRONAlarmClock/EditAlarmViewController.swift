@@ -18,6 +18,11 @@ class EditAlarmViewController: UIViewController, UITextFieldDelegate {
             if CRONExpression.isValid(for: enteredExpression) {
                 let cronExpression = try! CRONExpression.parseExpression(for: enteredExpression)
                 alarm.cronExpression = cronExpression
+                
+                let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+                alert.addAction(UIAlertAction(title: "Alarm Updated", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+
                 cronInput.textColor = .light
             } else {
                 let alert = UIAlertController(title: "Invalid CRON Expression",
