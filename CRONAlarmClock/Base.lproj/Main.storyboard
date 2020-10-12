@@ -96,7 +96,7 @@
                         <color key="backgroundColor" name="DarkColor"/>
                         <color key="tintColor" name="LightColor"/>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Jtv-fi-2z4"/>
+                    <navigationItem key="navigationItem" id="Jtv-fi-2z4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C17-gB-IYr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

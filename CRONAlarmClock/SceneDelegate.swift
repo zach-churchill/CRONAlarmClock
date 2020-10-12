@@ -21,12 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create instance of Alarm Store
         let alarmStore = AlarmStore()
         
-        // Remove bottom border from navigation bar
-        let navViewController = window!.rootViewController as! UINavigationController
-        navViewController.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navViewController.navigationBar.shadowImage = UIImage()
-        
         // Inject store into root view controller
+        let navViewController = window!.rootViewController as! UINavigationController
         let alarmsViewController = navViewController.topViewController as! AlarmsViewController
         alarmsViewController.alarmStore = alarmStore
     }
