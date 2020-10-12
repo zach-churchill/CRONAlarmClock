@@ -101,7 +101,7 @@
                                         <color key="backgroundColor" name="DarkColor"/>
                                         <color key="textColor" name="LightColor"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uY-tZ-q1p">
                                         <rect key="frame" x="0.0" y="189" width="414" height="155"/>
