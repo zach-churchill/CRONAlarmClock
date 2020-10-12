@@ -72,5 +72,18 @@ class AlarmsViewController: UITableViewController {
         
         return config
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "editAlarm":
+            if let row = tableView.indexPathForSelectedRow?.row {
+                let alarm = alarmStore.getAlarm(at: row)
+                let editAlarmViewController = segue.destination as! EditAlarmViewController
+                editAlarmViewController.alarm = alarm
+            }
+        default:
+            preconditionFailure("unexpected segue identifier")
+        }
+    }
 }
 

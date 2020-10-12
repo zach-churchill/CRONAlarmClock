@@ -68,7 +68,7 @@
                                     <outlet property="alarmLabel" destination="o5V-fQ-DOP" id="b1F-4K-cgC"/>
                                     <outlet property="descriptionLabel" destination="07G-h7-ZFc" id="Foa-cT-jv7"/>
                                     <outlet property="periodLabel" destination="zF4-kS-uXs" id="Pzn-q5-4iL"/>
-                                    <segue destination="TFn-Hh-9dN" kind="show" id="CKp-n8-gb5"/>
+                                    <segue destination="TFn-Hh-9dN" kind="show" identifier="editAlarm" id="CKp-n8-gb5"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -86,10 +86,10 @@
             </objects>
             <point key="canvasLocation" x="1050.7246376811595" y="120.53571428571428"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Alarm View Controller-->
         <scene sceneID="vno-EC-8Ib">
             <objects>
-                <viewController id="TFn-Hh-9dN" sceneMemberID="viewController">
+                <viewController id="TFn-Hh-9dN" customClass="EditAlarmViewController" customModule="CRONAlarmClock" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NwO-Gd-K9N">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
