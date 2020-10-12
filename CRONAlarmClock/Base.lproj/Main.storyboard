@@ -244,6 +244,8 @@
                     <navigationItem key="navigationItem" id="Jtv-fi-2z4"/>
                     <connections>
                         <outlet property="cronInput" destination="ezq-lc-MwL" id="Fji-hW-zfF"/>
+                        <outlet property="descriptionInput" destination="8QZ-VB-cbR" id="MnN-5U-Xk7"/>
+                        <outlet property="isActiveSwitch" destination="cQL-4q-Bsz" id="2zo-QJ-fAN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C17-gB-IYr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

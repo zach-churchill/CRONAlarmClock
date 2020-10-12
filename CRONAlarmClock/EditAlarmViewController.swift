@@ -10,6 +10,8 @@ import UIKit
 class EditAlarmViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var cronInput: UITextField!
+    @IBOutlet var descriptionInput: UITextField!
+    @IBOutlet var isActiveSwitch: UISwitch!
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
@@ -58,5 +60,7 @@ class EditAlarmViewController: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
 
         cronInput.text = alarm.cronExpression.expression
+        descriptionInput.text = alarm.description
+        isActiveSwitch.isOn = alarm.isActive
     }
 }
