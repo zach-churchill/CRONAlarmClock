@@ -13,7 +13,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="AlarmsViewController" customModule="CRONAlarmClock" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7cj-kG-LGZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" name="DarkColor"/>
                         <color key="separatorColor" name="MediumColor"/>
@@ -90,17 +90,55 @@
             <objects>
                 <viewController id="TFn-Hh-9dN" customClass="EditAlarmViewController" customModule="CRONAlarmClock" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NwO-Gd-K9N">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ekZ-pN-i2w">
+                                <rect key="frame" x="0.0" y="8" width="414" height="706"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="15 7 * * *" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ezq-lc-MwL">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="169"/>
+                                        <color key="backgroundColor" name="DarkColor"/>
+                                        <color key="textColor" name="LightColor"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uY-tZ-q1p">
+                                        <rect key="frame" x="0.0" y="189" width="414" height="155"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                        <state key="normal" title="Need help?">
+                                            <color key="titleColor" name="AccentColor"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f8y-ph-OWe">
+                                        <rect key="frame" x="0.0" y="364" width="414" height="342"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" name="LightColor"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="DarkColor"/>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="riI-In-d2A"/>
                         <color key="backgroundColor" name="DarkColor"/>
                         <color key="tintColor" name="LightColor"/>
+                        <constraints>
+                            <constraint firstItem="riI-In-d2A" firstAttribute="right" secondItem="ekZ-pN-i2w" secondAttribute="right" id="2hA-JO-Tjj"/>
+                            <constraint firstItem="ekZ-pN-i2w" firstAttribute="leadingMargin" secondItem="riI-In-d2A" secondAttribute="leading" id="Unk-B1-vk7"/>
+                            <constraint firstItem="riI-In-d2A" firstAttribute="bottom" secondItem="ekZ-pN-i2w" secondAttribute="bottom" constant="8" id="sQz-kL-Unz"/>
+                            <constraint firstItem="ekZ-pN-i2w" firstAttribute="top" secondItem="riI-In-d2A" secondAttribute="top" constant="8" id="x8r-Gz-YGO"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Jtv-fi-2z4"/>
+                    <connections>
+                        <outlet property="cronInput" destination="ezq-lc-MwL" id="Fji-hW-zfF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C17-gB-IYr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1980" y="121"/>
+            <point key="canvasLocation" x="1979.7101449275365" y="120.53571428571428"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dLw-M5-prP">

@@ -9,9 +9,11 @@ import UIKit
 
 class EditAlarmViewController: UIViewController {
     
+    @IBOutlet var cronInput: UITextField!
+
     var alarm: Alarm!
     
     override func viewWillAppear(_ animated: Bool) {
-        print(alarm)
+        cronInput.text = alarm.cronExpression.expression
     }
 }
