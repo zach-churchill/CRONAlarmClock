@@ -26,11 +26,13 @@ class EditAlarmViewController: UIViewController, UITextFieldDelegate {
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true)
     }
-    @IBAction func saveExpression(_ sender: UIButton) {
+    @IBAction func saveAlarm(_ sender: UIButton) {
         if let enteredExpression = cronInput.text {
             if CRONExpression.isValid(for: enteredExpression) {
                 let cronExpression = try! CRONExpression.parseExpression(for: enteredExpression)
                 alarm.cronExpression = cronExpression
+                alarm.description = descriptionInput.text
+                alarm.isActive = isActiveSwitch.isOn
                 
                 let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
                 alert.addAction(UIAlertAction(title: "Alarm Updated", style: .cancel, handler: nil))
