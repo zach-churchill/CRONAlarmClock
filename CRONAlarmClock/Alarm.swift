@@ -12,7 +12,7 @@ enum Period: String {
     case AM = "AM"
 }
 
-class Alarm: Equatable {
+class Alarm: Equatable, Codable {
     var cronExpression: CRONExpression
     var description: String?
     var isActive: Bool

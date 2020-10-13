@@ -47,7 +47,7 @@ struct CRONFieldBounds {
     let upperBound: Int
 }
 
-class CRONExpression: Equatable {
+class CRONExpression: Equatable, Codable {
     
     static let star: String = "*"
 
